@@ -7,13 +7,12 @@ public class ConexionDb
     public ConexionDb()
     {
         
-        var constructor = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("Properties/launchSettings.json").Build();
-        connectionString = constructor.GetSection("profiles:TiendaApi:conexionBaseERP").Value; 
+        var constructor = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.Development.json").Build();
+        connectionString = constructor.GetSection("ConnectionStrings:DefaultConnection").Value; 
             
     }
 
     public string cadenaSQL() { 
-        return connectionString; //retorna el conexion string
-        //nota: tambien puede retornar "grande" o la frase del "datasource...."
+        return connectionString; 
     }
 }
